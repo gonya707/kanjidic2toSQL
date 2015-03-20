@@ -26,6 +26,8 @@ public class Main {
 	}
 
 	private static void parse(String url) {
+		
+		int id = 0;
 
 		String result = "";
 
@@ -305,12 +307,11 @@ public class Main {
 				nanori = commaFormat(nanori, e_nanori.text());
 			}
 
-			// meanings TODO
+			// meanings
 			String meaning_en = "";
 			String meaning_fr = "";
 			String meaning_es = "";
-			String meaning_pt = "";
-			
+			String meaning_pt = "";	
 
 			Elements meanings = character.getElementsByTag("meaning");
 			for (Element meaning : meanings) {
@@ -331,11 +332,89 @@ public class Main {
 				}
 			}
 
+			if(meaning_en.contains("'")){
+				meaning_en = meaning_en.replace("'", "''");
+			}
+			if(meaning_fr.contains("'")){
+				meaning_fr = meaning_fr.replace("'", "''");
+			}
+			if(meaning_es.contains("'")){
+				meaning_es = meaning_es.replace("'", "''");
+			}
+			if(meaning_pt.contains("'")){
+				meaning_pt = meaning_pt.replace("'", "''");
+			}
 
-			//System.out.println(literal + " " + ja_on);
+			result = result + "\n(" + id 
+					+ ", '" + literal
+					+ "', '" + grade
+					+ "', '" + stroke_count
+					+ "', '" + freq
+					+ "', '" + jlpt
+					+ "', '" + codepoint_jis208
+					+ "', '" + codepoint_jis212
+					+ "', '" + codepoint_jis213
+					+ "', '" + codepoint_ucs
+					+ "', '" + radical_classical
+					+ "', '" + radical_nelson_c
+					+ "', '" + variant_jis208
+					+ "', '" + variant_jis212
+					+ "', '" + variant_jis213
+					+ "', '" + variant_deroo
+					+ "', '" + variant_njecd
+					+ "', '" + variant_s_h
+					+ "', '" + variant_nelson_c
+					+ "', '" + variant_oneill
+					+ "', '" + variant_ucs
+					+ "', '" + dic_nelson_c
+					+ "', '" + dic_nelson_n
+					+ "', '" + dic_halpern_njecd
+					+ "', '" + dic_halpern_kkd
+					+ "', '" + dic_halpern_kkld
+					+ "', '" + dic_halpern_kkld_2ed
+					+ "', '" + dic_heisig
+					+ "', '" + dic_heisig6
+					+ "', '" + dic_gakken
+					+ "', '" + dic_oneill_names
+					+ "', '" + dic_oneill_kk
+					+ "', '" + dic_moro
+					+ "', '" + dic_henshall
+					+ "', '" + dic_sh_kk
+					+ "', '" + dic_sakade
+					+ "', '" + dic_jf_cards
+					+ "', '" + dic_henshall3
+					+ "', '" + dic_tutt_cards
+					+ "', '" + dic_crowley
+					+ "', '" + dic_kanji_in_context
+					+ "', '" + dic_busy_people
+					+ "', '" + dic_kodansha_compact
+					+ "', '" + dic_maniette
+					+ "', '" + code_skip
+					+ "', '" + code_sh_desc
+					+ "', '" + code_four_corner
+					+ "', '" + code_deroo
+					+ "', '" + code_misclass
+					+ "', '" + ja_on
+					+ "', '" + ja_kun
+					+ "', '" + pinyin
+					+ "', '" + korean_r
+					+ "', '" + korean_h
+					+ "', '" + nanori
+					+ "', '" + meaning_en
+					+ "', '" + meaning_fr
+					+ "', '" + meaning_es
+					+ "', '" + meaning_pt
+					+ "'),";
+			
+			id++;
 
+			System.out.println(id + "/13108");
 		}	
 
+		result = result.substring(0, result.length()-1) + ";";
+		CreateSQL csql = new CreateSQL();
+		csql.setContent(csql.getHeader() + result);
+		csql.stringToFile("assets/result.sql");
 
 	}
 
