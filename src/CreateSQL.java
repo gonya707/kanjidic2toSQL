@@ -17,16 +17,16 @@ public class CreateSQL {
 			"CREATE TABLE IF NOT EXISTS `kanjidic2` (\r\n" + 
 			"	`id` int(11) NOT NULL,\r\n" + 
 			"	`literal` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`grade` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`stroke_count` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`freq` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`jlpt` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
+			"	`grade` int(11) NOT NULL,\r\n" + 
+			"	`stroke_count` int(11) NOT NULL,\r\n" + 
+			"	`freq` int(11) NOT NULL,\r\n" + 
+			"	`jlpt` int(11) NOT NULL,\r\n" + 
 			"	`codepoint_jis208` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`codepoint_jis212` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`codepoint_jis213` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`codepoint_ucs` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`radical_classical` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`radical_nelson_c` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
+			"	`radical_classical` int(11) NOT NULL,\r\n" + 
+			"	`radical_nelson_c` int(11) NOT NULL,\r\n" +  
 			"	`variant_jis208` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`variant_jis212` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`variant_jis213` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
@@ -36,29 +36,29 @@ public class CreateSQL {
 			"	`variant_nelson_c` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`variant_oneill` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`variant_ucs` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_nelson_c` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_nelson_n` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_halpern_njecd` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_halpern_kkd` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_halpern_kkld` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_halpern_kkld_2ed` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_heisig` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_heisig6` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_gakken` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_oneill_names` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_oneill_kk` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_moro` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_henshall` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_sh_kk` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_sakade` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_jf_cards` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_henshall3` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_tutt_cards` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_crowley` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_kanji_in_context` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_busy_people` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_kodansha_compact` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
-			"	`dic_maniette` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
+			"	`dic_nelson_c` int(11) NOT NULL,\r\n" + 
+			"	`dic_nelson_n` int(11) NOT NULL,\r\n" + 
+			"	`dic_halpern_njecd` int(11) NOT NULL,\r\n" + 
+			"	`dic_halpern_kkd` int(11) NOT NULL,\r\n" + 
+			"	`dic_halpern_kkld` int(11) NOT NULL,\r\n" + 
+			"	`dic_halpern_kkld_2ed` int(11) NOT NULL,\r\n" + 
+			"	`dic_heisig` int(11) NOT NULL,\r\n" + 
+			"	`dic_heisig6` int(11) NOT NULL,\r\n" + 
+			"	`dic_gakken` int(11) NOT NULL,\r\n" + 
+			"	`dic_oneill_names` int(11) NOT NULL,\r\n" + 
+			"	`dic_oneill_kk` int(11) NOT NULL,\r\n" + 
+			"	`dic_moro` int(11) NOT NULL,\r\n" + 
+			"	`dic_henshall` int(11) NOT NULL,\r\n" + 
+			"	`dic_sh_kk` int(11) NOT NULL,\r\n" + 
+			"	`dic_sakade` int(11) NOT NULL,\r\n" + 
+			"	`dic_jf_cards` int(11) NOT NULL,\r\n" + 
+			"	`dic_henshall3` int(11) NOT NULL,\r\n" + 
+			"	`dic_tutt_cards` int(11) NOT NULL,\r\n" + 
+			"	`dic_crowley` int(11) NOT NULL,\r\n" + 
+			"	`dic_kanji_in_context` int(11) NOT NULL,\r\n" + 
+			"	`dic_busy_people` int(11) NOT NULL,\r\n" +  
+			"	`dic_kodansha_compact` int(11) NOT NULL,\r\n" + 
+			"	`dic_maniette` int(11) NOT NULL,\r\n" + 
 			"	`code_skip` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`code_sh_desc` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 
 			"	`code_four_corner` varchar(255) COLLATE utf8_bin NOT NULL,\r\n" + 

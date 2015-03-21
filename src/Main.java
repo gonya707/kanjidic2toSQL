@@ -24,6 +24,16 @@ public class Main {
 		}
 		return s;
 	}
+	
+	private static int toInt(String s){
+		int r = 0;
+		
+		if (!s.equals("")){
+			Integer.parseInt(s);
+		}
+		
+		return r;
+	}
 
 	private static void parse(String url) {
 		
@@ -50,10 +60,10 @@ public class Main {
 
 			// Single data tags
 			String literal = character.getElementsByTag("literal").text();
-			String grade = character.getElementsByTag("grade").text();
-			String stroke_count = character.getElementsByTag("stroke_count").text();
-			String freq = character.getElementsByTag("freq").text();
-			String jlpt = character.getElementsByTag("jlpt").text();
+			int grade = toInt(character.getElementsByTag("grade").text());
+			String stroke_count = character.getElementsByTag("stroke_count").text(); // TODO  sometimes there are 2 of this tags being the first one the accepted count and the subsequent ones common mistakes. There should be more sql fields, at least one for the correct and another for mistakes
+			int freq = toInt(character.getElementsByTag("freq").text());
+			int jlpt = toInt(character.getElementsByTag("jlpt").text());
 
 			// codepoint data
 			String codepoint_jis208 = "";
@@ -81,18 +91,18 @@ public class Main {
 			}
 
 			// radical data
-			String radical_classical = "";
-			String radical_nelson_c = "";
+			int radical_classical = 0;
+			int radical_nelson_c = 0;
 
 			Elements radicals = character.getElementsByTag("rad_value");
 			for (Element radical : radicals) {
 				String rad_type = radical.attr("rad_type");
 				switch(rad_type){
 				case "classical":
-					radical_classical = commaFormat(radical_classical, radical.text());
+					radical_classical = toInt(radical.text());
 					break;
 				case "nelson_c":
-					radical_nelson_c = commaFormat(radical_nelson_c, radical.text());
+					radical_nelson_c = toInt(radical.text());
 					break;
 				}
 			}
@@ -143,102 +153,102 @@ public class Main {
 			}
 
 			// dic references
-			String dic_nelson_c = "";
+			int dic_nelson_c = 0;
 			String dic_nelson_n = "";
-			String dic_halpern_njecd = "";
-			String dic_halpern_kkd = "";
-			String dic_halpern_kkld = "";
-			String dic_halpern_kkld_2ed = "";
-			String dic_heisig = "";
-			String dic_heisig6 = "";
-			String dic_gakken = "";
+			int dic_halpern_njecd = 0;
+			int dic_halpern_kkd = 0;
+			int dic_halpern_kkld = 0;
+			int dic_halpern_kkld_2ed = 0;
+			int dic_heisig = 0;
+			int dic_heisig6 = 0;
+			int dic_gakken = 0;
 			String dic_oneill_names = "";
-			String dic_oneill_kk = "";
-			String dic_moro = "";
-			String dic_henshall = "";
-			String dic_sh_kk = "";
-			String dic_sakade = "";
-			String dic_jf_cards = "";
-			String dic_henshall3 = "";
-			String dic_tutt_cards = "";
-			String dic_crowley = "";
-			String dic_kanji_in_context = "";
+			int dic_oneill_kk = 0;
+			String dic_moro = ""; //TODO get the other info from the tag
+			int dic_henshall = 0;
+			int dic_sh_kk = 0;
+			int dic_sakade = 0;
+			int dic_jf_cards = 0;
+			int dic_henshall3 = 0;
+			int dic_tutt_cards = 0;
+			int dic_crowley = 0;
+			int dic_kanji_in_context = 0;
 			String dic_busy_people = "";
-			String dic_kodansha_compact = "";
-			String dic_maniette = "";
+			int dic_kodansha_compact = 0;
+			int dic_maniette = 0;
 
 			Elements dictionaries = character.getElementsByTag("dic_ref");
 			for (Element dictionary : dictionaries) {
 				String dr_type = dictionary.attr("dr_type");
 				switch(dr_type){
 				case "nelson_c":
-					dic_nelson_c = commaFormat(dic_nelson_c, dictionary.text());
+					dic_nelson_c = toInt(dictionary.text());
 					break;
 				case "nelson_n":
-					dic_nelson_n = commaFormat(dic_nelson_n, dictionary.text());
+					dic_nelson_n = dictionary.text();
 					break;
 				case "halpern_njecd":
-					dic_halpern_njecd = commaFormat(dic_halpern_njecd, dictionary.text());
+					dic_halpern_njecd = toInt(dictionary.text());
 					break;
 				case "halpern_kkd":
-					dic_halpern_kkd = commaFormat(dic_halpern_kkd, dictionary.text());
+					dic_halpern_kkd = toInt(dictionary.text());
 					break;
 				case "halpern_kkld":
-					dic_halpern_kkld = commaFormat(dic_halpern_kkld, dictionary.text());
+					dic_halpern_kkld = toInt(dictionary.text());
 					break;
 				case "halpern_kkld_2ed":
-					dic_halpern_kkld_2ed = commaFormat(dic_halpern_kkld_2ed, dictionary.text());
+					dic_halpern_kkld_2ed = toInt(dictionary.text());
 					break;
 				case "heisig":
-					dic_heisig = commaFormat(dic_heisig, dictionary.text());
+					dic_heisig = toInt(dictionary.text());
 					break;
 				case "heisig6":
-					dic_heisig6 = commaFormat(dic_heisig6, dictionary.text());
+					dic_heisig6 = toInt(dictionary.text());
 					break;
 				case "gakken":
-					dic_gakken = commaFormat(dic_gakken, dictionary.text());
+					dic_gakken = toInt(dictionary.text());
 					break;
 				case "oneill_names":
-					dic_oneill_names = commaFormat(dic_oneill_names, dictionary.text());
+					dic_oneill_names = dictionary.text();
 					break;
 				case "oneill_kk":
-					dic_oneill_kk = commaFormat(dic_oneill_kk, dictionary.text());
+					dic_oneill_kk = toInt(dictionary.text());
 					break;
 				case "moro":
-					dic_moro = commaFormat(dic_moro, dictionary.text());
+					dic_moro = dictionary.text(); // this one is not an integer
 					break;
 				case "henshall":
-					dic_henshall = commaFormat(dic_henshall, dictionary.text());
+					dic_henshall = toInt(dictionary.text());
 					break;
 				case "sh_kk":
-					dic_sh_kk = commaFormat(dic_sh_kk, dictionary.text());
+					dic_sh_kk = toInt(dictionary.text());
 					break;
 				case "sakade":
-					dic_sakade = commaFormat(dic_sakade, dictionary.text());
+					dic_sakade = toInt(dictionary.text());
 					break;
 				case "jf_cards":
-					dic_jf_cards = commaFormat(dic_jf_cards, dictionary.text());
+					dic_jf_cards = toInt(dictionary.text());
 					break;
 				case "henshall3":
-					dic_henshall3 = commaFormat(dic_henshall3, dictionary.text());
+					dic_henshall3 = toInt(dictionary.text());
 					break;
 				case "tutt_cards":
-					dic_tutt_cards = commaFormat(dic_tutt_cards, dictionary.text());
+					dic_tutt_cards = toInt(dictionary.text());
 					break;
 				case "crowley ":
-					dic_crowley = commaFormat(dic_crowley, dictionary.text());
+					dic_crowley = toInt(dictionary.text());
 					break;
 				case "kanji_in_context":
-					dic_kanji_in_context = commaFormat(dic_kanji_in_context, dictionary.text());
+					dic_kanji_in_context = toInt(dictionary.text());
 					break;
 				case "busy_people":
-					dic_busy_people = commaFormat(dic_busy_people, dictionary.text());
+					dic_busy_people = dictionary.text();
 					break;
 				case "kodansha_compact":
-					dic_kodansha_compact = commaFormat(dic_kodansha_compact, dictionary.text());
+					dic_kodansha_compact = toInt(dictionary.text());
 					break;
 				case "maniette":
-					dic_maniette = commaFormat(dic_maniette, dictionary.text());
+					dic_maniette = toInt(dictionary.text());
 					break;
 				}
 			}
