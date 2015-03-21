@@ -29,7 +29,7 @@ public class Main {
 		int r = 0;
 		
 		if (!s.equals("")){
-			Integer.parseInt(s);
+			r = Integer.parseInt(s);
 		}
 		
 		return r;
@@ -357,16 +357,16 @@ public class Main {
 
 			result = result + "\n(" + id 
 					+ ", '" + literal
-					+ "', '" + grade
+					+ "', '" + (grade == 0 ? "" : grade)
 					+ "', '" + stroke_count
-					+ "', '" + freq
-					+ "', '" + jlpt
+					+ "', '" + (freq == 0 ? "" : freq)
+					+ "', '" + (jlpt == 0 ? "" : jlpt)
 					+ "', '" + codepoint_jis208
 					+ "', '" + codepoint_jis212
 					+ "', '" + codepoint_jis213
 					+ "', '" + codepoint_ucs
-					+ "', '" + radical_classical
-					+ "', '" + radical_nelson_c
+					+ "', '" + (radical_classical == 0 ? "" : radical_classical)
+					+ "', '" + (radical_nelson_c == 0 ? "" : radical_nelson_c)
 					+ "', '" + variant_jis208
 					+ "', '" + variant_jis212
 					+ "', '" + variant_jis213
@@ -376,29 +376,29 @@ public class Main {
 					+ "', '" + variant_nelson_c
 					+ "', '" + variant_oneill
 					+ "', '" + variant_ucs
-					+ "', '" + dic_nelson_c
-					+ "', '" + dic_nelson_n
-					+ "', '" + dic_halpern_njecd
-					+ "', '" + dic_halpern_kkd
-					+ "', '" + dic_halpern_kkld
-					+ "', '" + dic_halpern_kkld_2ed
-					+ "', '" + dic_heisig
-					+ "', '" + dic_heisig6
-					+ "', '" + dic_gakken
-					+ "', '" + dic_oneill_names
-					+ "', '" + dic_oneill_kk
-					+ "', '" + dic_moro
-					+ "', '" + dic_henshall
-					+ "', '" + dic_sh_kk
-					+ "', '" + dic_sakade
-					+ "', '" + dic_jf_cards
-					+ "', '" + dic_henshall3
-					+ "', '" + dic_tutt_cards
-					+ "', '" + dic_crowley
-					+ "', '" + dic_kanji_in_context
-					+ "', '" + dic_busy_people
-					+ "', '" + dic_kodansha_compact
-					+ "', '" + dic_maniette
+					+ "', '" + (dic_nelson_c == 0 ? "" : dic_nelson_c)
+					+ "', '" + dic_nelson_n 
+					+ "', '" + (dic_halpern_njecd == 0 ? "" : dic_halpern_njecd)
+					+ "', '" + (dic_halpern_kkd == 0 ? "" : dic_halpern_kkd)
+					+ "', '" + (dic_halpern_kkld == 0 ? "" : dic_halpern_kkld)
+					+ "', '" + (dic_halpern_kkld_2ed == 0 ? "" : dic_halpern_kkld_2ed)
+					+ "', '" + (dic_heisig == 0 ? "" : dic_heisig)
+					+ "', '" + (dic_heisig6 == 0 ? "" : dic_heisig6)
+					+ "', '" + (dic_gakken == 0 ? "" : dic_gakken)
+					+ "', '" + dic_oneill_names 
+					+ "', '" + (dic_oneill_kk == 0 ? "" : dic_oneill_kk)
+					+ "', '" + dic_moro 
+					+ "', '" + (dic_henshall == 0 ? "" : dic_henshall)
+					+ "', '" + (dic_sh_kk == 0 ? "" : dic_sh_kk)
+					+ "', '" + (dic_sakade == 0 ? "" : dic_sakade)
+					+ "', '" + (dic_jf_cards == 0 ? "" : dic_jf_cards)
+					+ "', '" + (dic_henshall3 == 0 ? "" : dic_henshall3)
+					+ "', '" + (dic_tutt_cards == 0 ? "" : dic_tutt_cards)
+					+ "', '" + (dic_crowley == 0 ? "" : dic_crowley)
+					+ "', '" + (dic_kanji_in_context == 0 ? "" : dic_kanji_in_context)
+					+ "', '" + dic_busy_people 
+					+ "', '" + (dic_kodansha_compact == 0 ? "" : dic_kodansha_compact)
+					+ "', '" + (dic_maniette == 0 ? "" : dic_maniette)
 					+ "', '" + code_skip
 					+ "', '" + code_sh_desc
 					+ "', '" + code_four_corner
